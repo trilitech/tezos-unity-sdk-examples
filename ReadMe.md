@@ -101,7 +101,7 @@ ITezosAPI tezos = TezosSingleton.Instance;
 string activeWalletAddress = tezos.GetActiveWalletAddress();
 
 // Determines if the user account owns a given Nft
-bool hasTheNft = await tezos.IsOwnerOfToken(
+bool hasTheNft = tezos.IsOwnerOfToken(
     activeWalletAddress, 
     demoNFTAddress, 
     demoTokenId);
