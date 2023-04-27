@@ -94,7 +94,7 @@ To see this feature in action, play the `Example02_NFTTokenGating` Scene. The <a
 string demoNFTAddress = "KT1BRADdqGk2eLmMqvyWzqVmPQ1RCBCbW5dY";
 int demoTokenId = 1;
             
-// Store reference to Tezos SDK For Unity
+// Store reference for convenience
 ITezosAPI tezos = TezosSingleton.Instance;
         
 // Returns the address of the current active wallet
