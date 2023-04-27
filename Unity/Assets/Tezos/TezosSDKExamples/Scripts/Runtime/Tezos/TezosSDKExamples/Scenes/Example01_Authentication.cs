@@ -3,7 +3,7 @@ using TezosAPI;
 using TezosSDKExamples.Controllers;
 using UnityEngine;
 
-#pragma warning disable CS4014, CS1998
+#pragma warning disable CS4014, CS1998, CS0219
 namespace TezosSDKExamples.Scenes
 {
     /// <summary>

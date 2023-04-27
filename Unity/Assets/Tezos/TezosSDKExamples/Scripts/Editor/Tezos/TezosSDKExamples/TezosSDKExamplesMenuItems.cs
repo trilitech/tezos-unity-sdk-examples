@@ -9,14 +9,18 @@ namespace TezosSDKExamples
 
         
 		//  Fields ----------------------------------------
-		
-		[MenuItem( TezosSDKExamplesConstants.PathMenuItemWindowCompanyProject + "/" + "Open ReadMe", 
+
+		[MenuItem(TezosSDKExamplesConstants.PathMenuItemWindowCompanyProject + "/" + "Open ReadMe",
 			false,
-						TezosSDKExamplesConstants.PriorityMenuItem_Examples)]
+			TezosSDKExamplesConstants.PriorityMenuItem_Examples)]
 		public static void SelectReadmes()
 		{
-			ReadMeHelper.SelectReadmes();
+			//Hardcoded guid for ReadMe
+			var guid = "b9b38435c6335be46a3471cf04b7863e";
+			var readmeObject = AssetDatabase.LoadMainAssetAtPath(AssetDatabase.GUIDToAssetPath(guid));
+			ReadMeHelper.PingObject(readmeObject);
+			ReadMeHelper.SelectObject(readmeObject);
 		}
-		
+
 	}
 }

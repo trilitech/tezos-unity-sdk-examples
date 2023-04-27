@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Tezos/TezosSDKExamples/Scenes/Example01_Authentication.unity
+    guid: 791e64f89d8236f4ab4fb4fddf9b4204
+  - enabled: 1
+    path: Assets/Tezos/TezosSDKExamples/Scenes/Example02_NFTTokenGating.unity
+    guid: af38c5d306baabc46865c0fecd53c044
   m_configObjects: {}

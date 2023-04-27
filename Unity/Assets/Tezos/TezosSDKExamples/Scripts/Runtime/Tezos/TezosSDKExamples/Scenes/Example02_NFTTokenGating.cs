@@ -59,6 +59,7 @@ namespace TezosSDKExamples.Scenes
             Debug.Log($"You are not connected to a wallet.");
         }
         
+        
         protected override async UniTask OnCheckForNft01ButtonClicked()
         { 
             // Required: Render UI
@@ -101,6 +102,7 @@ namespace TezosSDKExamples.Scenes
             base.RefreshUIAsync();
         }
 
+        
         protected override async UniTask OnCheckForNft02ButtonClicked()
         { 
             // Required: Render UI
@@ -142,6 +144,7 @@ namespace TezosSDKExamples.Scenes
             View.DetailsTextPanelUI.BodyTextAreaUI.Text.text = result;
             base.RefreshUIAsync();
         }
+        
         
         protected override async UniTask OnListAllNftsButtonClicked()
         {
