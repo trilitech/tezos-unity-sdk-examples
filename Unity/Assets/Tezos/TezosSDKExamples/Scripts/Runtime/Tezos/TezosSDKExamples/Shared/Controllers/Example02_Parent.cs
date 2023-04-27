@@ -6,6 +6,7 @@ using UnityEngine;
 using System;
 using TezosAPI;
 using TezosSDKExamples.Scenes;
+using TezosSDKExamples.Shared.Tezos;
 
 #pragma warning disable CS4014, CS1998, CS0219
 namespace TezosSDKExamples.Controllers

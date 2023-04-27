@@ -7,12 +7,12 @@ using TezosAPI;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace TezosSDKExamples
+namespace TezosSDKExamples.Shared.Tezos
 {
     /// <summary>
     /// Helper methods
     /// </summary>
-    public static class TezosSDKExamplesExtensions
+    public static class TezosExtensions
     {
         /// <summary>
         /// Determines if the user is authenticated with
@@ -35,7 +35,7 @@ namespace TezosSDKExamples
         /// Gets all tokens owned by the authenticated user account
         /// </summary>
         /// <param name="account"></param>
-        public static async UniTask<List<TezosSDKExamples.TokenBalance>> GetAllTokensForOwner(this ITezosAPI tezos, string account)
+        public static async UniTask<List<TezosSDKExamples.Shared.Tezos.TokenBalance>> GetAllTokensForOwner(this ITezosAPI tezos, string account)
         {
             return await GetAllTokens(account);
         }
@@ -73,12 +73,12 @@ namespace TezosSDKExamples
         /// <summary>
         /// Gets token balances for the authenticated user account
         /// </summary>
-        private static async UniTask<List<TezosSDKExamples.TokenBalance>> GetAllTokens(string account)
+        private static async UniTask<List<TezosSDKExamples.Shared.Tezos.TokenBalance>> GetAllTokens(string account)
         {
             string BaseUrl = "https://api.tzkt.io/v1/tokens/balances?balance.ne=0";
             string url =
                 $"{BaseUrl}&account={account}&select=account.address%20as%20owner,balance,token.contract.address%20as%20tokenContract,token.tokenId%20as%20tokenId,token.metadata%20as%20tokenMetadata,lastTime,id";
-            List<TezosSDKExamples.TokenBalance> tokenBalances = new List<TezosSDKExamples.TokenBalance>();
+            List<TezosSDKExamples.Shared.Tezos.TokenBalance> tokenBalances = new List<TezosSDKExamples.Shared.Tezos.TokenBalance>();
             
             using (UnityWebRequest request = UnityWebRequest.Get(url))
             {
@@ -92,7 +92,7 @@ namespace TezosSDKExamples
                 else
                 {
                     //Debug.Log("Response: " + request.downloadHandler.text);
-                    tokenBalances = JsonHelper.FromJson<TezosSDKExamples.TokenBalance>(request.downloadHandler.text).ToList();
+                    tokenBalances = JsonHelper.FromJson<TezosSDKExamples.Shared.Tezos.TokenBalance>(request.downloadHandler.text).ToList();
                     // foreach (TokenBalance tokenBalance in tokenBalances)
                     // {
                     //     Debug.Log(

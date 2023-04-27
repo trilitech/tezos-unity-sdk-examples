@@ -6,6 +6,7 @@ using UnityEngine;
 using System;
 using TezosAPI;
 using TezosSDKExamples.Scenes;
+using TezosSDKExamples.Shared.Tezos;
 
 #pragma warning disable CS4014, CS1998, CS0219
 namespace TezosSDKExamples.Controllers
@@ -51,8 +52,6 @@ namespace TezosSDKExamples.Controllers
         //  Methods ---------------------------------------
         protected virtual async UniTask RefreshUIAsync()
         {
-            // Header
-            _view.AuthenticationButtonUI.IsInteractable = true;
             
             // Tezos SDK For Unity
             // Usage: Determines if the user is authenticated
@@ -63,6 +62,9 @@ namespace TezosSDKExamples.Controllers
             // Usage: Returns the address of the current active wallet
             string address = tezos.GetActiveWalletAddress();
             
+            
+            // Header
+            _view.AuthenticationButtonUI.IsInteractable = true;
             UIHelper.SetButtonText(
                 _view.AuthenticationButtonUI.Button,
                 isAuthenticated,

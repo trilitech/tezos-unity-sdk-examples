@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using TezosAPI;
 using TezosSDKExamples.Controllers;
+using TezosSDKExamples.Shared.Tezos;
 using UnityEngine;
 
 #pragma warning disable CS4014, CS1998, CS0219
@@ -14,7 +15,7 @@ namespace TezosSDKExamples.Scenes
         //  Fields ----------------------------------------
         
         // Tezos SDK For Unity
-        // Usage: Store reference to Tezos SDK For Unity
+        // Usage: Store reference for convenience
         private ITezosAPI _tezos;
         
         

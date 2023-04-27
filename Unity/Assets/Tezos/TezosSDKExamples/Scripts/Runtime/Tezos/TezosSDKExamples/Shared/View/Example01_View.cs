@@ -1,6 +1,7 @@
 
 using TezosSDKExamples.Scenes;
 using TezosSDKExamples.Shared;
+using TezosSDKExamples.Shared.Tezos;
 using UnityEngine;
 
 #pragma warning disable CS1998

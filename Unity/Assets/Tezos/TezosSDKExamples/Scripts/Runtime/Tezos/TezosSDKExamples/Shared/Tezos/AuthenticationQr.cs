@@ -1,7 +1,7 @@
 using TezosAPI;
 using UnityEngine;
 
-namespace TezosSDKExamples.Shared
+namespace TezosSDKExamples.Shared.Tezos
 {
     //  Namespace Properties ------------------------------
 
