@@ -1,0 +1,20 @@
+{
+    "name": "Tezos.TezosSDKExamples.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:dd450e52836dc1e498d83fbe61952aea",
+        "GUID:71cedef0a99da6f4fa432b8c4cbe9626",
+        "GUID:dc0d85c9a9837b8479a48e484bc54940"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
