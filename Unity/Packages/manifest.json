@@ -2,7 +2,7 @@
   "dependencies": {
     "com.rmc.rmc-core": "https://github.com/SamuelAsherRivello/rmc-core.git#1.3.6",
     "com.rmc.rmc-unitask": "2.3.32",
-    "com.trilitech.tezos-unity-sdk": "https://github.com/trilitech/tezos-unity-sdk.git#1.4.0",
+    "com.trilitech.tezos-unity-sdk": "https://github.com/trilitech/tezos-unity-sdk.git#main",
     "com.unity.collab-proxy": "2.0.4",
     "com.unity.feature.development": "1.0.1",
     "com.unity.ide.rider": "3.0.21",

@@ -103,7 +103,7 @@ namespace TezosSDKExamples.Shared.Tezos
 
         public void ConnectByDeeplink()
         {
-            _tezos.Wallet.Connect(true);
+            _tezos.Wallet.Connect(WalletProviderType.kukai);
         }
 
         void EnableUI(bool isAuthenticated)

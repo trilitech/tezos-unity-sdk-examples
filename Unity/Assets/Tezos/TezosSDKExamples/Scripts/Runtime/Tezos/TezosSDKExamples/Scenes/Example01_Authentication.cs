@@ -52,7 +52,7 @@ namespace TezosSDKExamples.Scenes
                     
                     // Tezos SDK For Unity
                     // Usage: Connect To Wallet Using The Tezos SDK For Unity
-                    _tezos.Wallet.Connect(true);
+                    _tezos.Wallet.Connect(WalletProviderType.kukai);
                 }
                 else
                 {
