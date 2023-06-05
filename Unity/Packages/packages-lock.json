@@ -17,11 +17,11 @@
       "url": "https://registry.npmjs.com"
     },
     "com.trilitech.tezos-unity-sdk": {
-      "version": "https://github.com/trilitech/tezos-unity-sdk.git#1.3.0",
+      "version": "https://github.com/trilitech/tezos-unity-sdk.git#1.4.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "08f4ace9045685d5eeade33460409d1079b369d1"
+      "hash": "215bb8161e3b680b823089ca2a1251a4afb51ff8"
     },
     "com.unity.collab-proxy": {
       "version": "2.0.4",

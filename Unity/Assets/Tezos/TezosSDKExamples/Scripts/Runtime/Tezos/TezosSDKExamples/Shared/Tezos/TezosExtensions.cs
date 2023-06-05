@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using Cysharp.Threading.Tasks;
-using TezosAPI;
+using Scripts.Tezos;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -18,15 +18,20 @@ namespace TezosSDKExamples.Shared.Tezos
         /// Determines if the user is authenticated with
         /// the Tezos SDK For Unity
         /// </summary>
-        public static bool HasActiveWalletAddress(this ITezosAPI tezos)
+        public static bool HasActiveWalletAddress(this ITezos tezos)
         {
-            return !string.IsNullOrEmpty(tezos.GetActiveWalletAddress());
+            return !string.IsNullOrEmpty(tezos.Wallet.GetActiveAddress());
         }
 
         /// <summary>
         /// Determines if the authenticated user account owns a given token
         /// </summary>
-        public static async UniTask<bool> IsOwnerOfToken(this ITezosAPI tezos, string account, string contract, int tokenId)
+        public static async UniTask<bool> IsOwnerOfToken(
+            this ITezos tezos,
+            string account,
+            string contract,
+            int tokenId
+        )
         {
             return await CheckTokenBalance(account, contract, tokenId);
         }
@@ -35,7 +40,9 @@ namespace TezosSDKExamples.Shared.Tezos
         /// Gets all tokens owned by the authenticated user account
         /// </summary>
         /// <param name="account"></param>
-        public static async UniTask<List<TezosSDKExamples.Shared.Tezos.TokenBalance>> GetAllTokensForOwner(this ITezosAPI tezos, string account)
+        public static async UniTask<
+            List<TezosSDKExamples.Shared.Tezos.TokenBalance>
+        > GetAllTokensForOwner(this ITezos tezos, string account)
         {
             return await GetAllTokens(account);
         }
@@ -43,18 +50,25 @@ namespace TezosSDKExamples.Shared.Tezos
         /// <summary>
         /// Gets token balance for the authenticated user account
         /// </summary>
-        private static async UniTask<bool> CheckTokenBalance(string account, string contract, int tokenId)
+        private static async UniTask<bool> CheckTokenBalance(
+            string account,
+            string contract,
+            int tokenId
+        )
         {
             string BaseUrl = "https://api.tzkt.io/v1/tokens/balances?balance.ne=0";
-            string url = $"{BaseUrl}&account={account}&token.contract={contract}&token.tokenId={tokenId}&select=id";
+            string url =
+                $"{BaseUrl}&account={account}&token.contract={contract}&token.tokenId={tokenId}&select=id";
 
             bool isOwner = false;
             using (UnityWebRequest request = UnityWebRequest.Get(url))
             {
                 await request.SendWebRequest();
 
-                if (request.result == UnityWebRequest.Result.ConnectionError ||
-                    request.result == UnityWebRequest.Result.DataProcessingError)
+                if (
+                    request.result == UnityWebRequest.Result.ConnectionError
+                    || request.result == UnityWebRequest.Result.DataProcessingError
+                )
                 {
                     Debug.LogError("Error: " + request.error);
                 }
@@ -69,30 +83,38 @@ namespace TezosSDKExamples.Shared.Tezos
             return isOwner;
         }
 
-        
         /// <summary>
         /// Gets token balances for the authenticated user account
         /// </summary>
-        private static async UniTask<List<TezosSDKExamples.Shared.Tezos.TokenBalance>> GetAllTokens(string account)
+        private static async UniTask<List<TezosSDKExamples.Shared.Tezos.TokenBalance>> GetAllTokens(
+            string account
+        )
         {
             string BaseUrl = "https://api.tzkt.io/v1/tokens/balances?balance.ne=0";
             string url =
                 $"{BaseUrl}&account={account}&select=account.address%20as%20owner,balance,token.contract.address%20as%20tokenContract,token.tokenId%20as%20tokenId,token.metadata%20as%20tokenMetadata,lastTime,id";
-            List<TezosSDKExamples.Shared.Tezos.TokenBalance> tokenBalances = new List<TezosSDKExamples.Shared.Tezos.TokenBalance>();
-            
+            List<TezosSDKExamples.Shared.Tezos.TokenBalance> tokenBalances =
+                new List<TezosSDKExamples.Shared.Tezos.TokenBalance>();
+
             using (UnityWebRequest request = UnityWebRequest.Get(url))
             {
                 await request.SendWebRequest();
 
-                if (request.result == UnityWebRequest.Result.ConnectionError ||
-                    request.result == UnityWebRequest.Result.DataProcessingError)
+                if (
+                    request.result == UnityWebRequest.Result.ConnectionError
+                    || request.result == UnityWebRequest.Result.DataProcessingError
+                )
                 {
                     Debug.LogError("Error: " + request.error);
                 }
                 else
                 {
                     //Debug.Log("Response: " + request.downloadHandler.text);
-                    tokenBalances = JsonHelper.FromJson<TezosSDKExamples.Shared.Tezos.TokenBalance>(request.downloadHandler.text).ToList();
+                    tokenBalances = JsonHelper
+                        .FromJson<TezosSDKExamples.Shared.Tezos.TokenBalance>(
+                            request.downloadHandler.text
+                        )
+                        .ToList();
                     // foreach (TokenBalance tokenBalance in tokenBalances)
                     // {
                     //     Debug.Log(
@@ -103,7 +125,6 @@ namespace TezosSDKExamples.Shared.Tezos
 
             return tokenBalances;
         }
-
 
         /// <summary>
         /// Helper class for deserializing JSON arrays
@@ -124,7 +145,7 @@ namespace TezosSDKExamples.Shared.Tezos
             }
         }
     }
-    
+
     /// <summary>
     /// Token balance data structure
     /// </summary>
@@ -132,19 +153,19 @@ namespace TezosSDKExamples.Shared.Tezos
     public class TokenBalance
     {
         /// <summary>
-        /// Internal TzKT id.  
+        /// Internal TzKT id.
         /// **[sortable]**
         /// </summary>
         public long id;
 
         /// <summary>
-        /// Owner account.  
+        /// Owner account.
         /// Click on the field to expand more details.
         /// </summary>
         public string owner;
 
         /// <summary>
-        /// Balance (raw value, not divided by `decimals`).  
+        /// Balance (raw value, not divided by `decimals`).
         /// **[sortable]**
         /// </summary>
         public string balance;
@@ -170,5 +191,3 @@ namespace TezosSDKExamples.Shared.Tezos
         public string lastTime; // JsonUtility is bad at deserializing this to DateTime
     }
 }
-    
-    
