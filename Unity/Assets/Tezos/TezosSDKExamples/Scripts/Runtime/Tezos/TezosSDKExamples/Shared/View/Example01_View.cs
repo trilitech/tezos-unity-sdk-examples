@@ -15,12 +15,12 @@ namespace TezosSDKExamples.View
         //  Events ----------------------------------------
 
         //  Properties ------------------------------------
-        public AuthenticationManager AuthenticationQr { get { return _authenticationQr;} }
+        public AuthenticationQr AuthenticationQr { get { return _authenticationQr;} }
         
         //  Fields ----------------------------------------
         [Header("Tezos SDK For Unity")]
         [SerializeField]
-        private AuthenticationManager _authenticationQr;
+        private AuthenticationQr _authenticationQr;
 
         //  Unity Methods  --------------------------------
         protected override async void Awake()

@@ -25,6 +25,7 @@ namespace TezosSDKExamples.Scenes
         {
             // Required: Render UI
             base.Start();
+            View.AuthenticationQr.IsVisible = false;
             
             // Tezos SDK For Unity
             // Usage: Store reference for convenience
@@ -32,8 +33,9 @@ namespace TezosSDKExamples.Scenes
             
             // Tezos SDK For Unity
             // Usage: Observe events for Tezos Wallet
-            _tezos.Wallet.MessageReceiver.AccountConnected += Tezos_OnAccountConnected;
-            _tezos.Wallet.MessageReceiver.AccountDisconnected += Tezos_AccountDisconnected;
+            _tezos.Wallet.MessageReceiver.HandshakeReceived += OnHandshakeReceived;
+            _tezos.Wallet.MessageReceiver.AccountConnected += OnAccountConnected;
+            _tezos.Wallet.MessageReceiver.AccountDisconnected += AccountDisconnected;
         }
 
 
@@ -52,6 +54,8 @@ namespace TezosSDKExamples.Scenes
                     
                     // Tezos SDK For Unity
                     // Usage: Connect To Wallet Using The Tezos SDK For Unity
+                    View.AuthenticationQr.IsVisible = true;
+                    View.AuthenticationQr.ShowQrCode();
                     _tezos.Wallet.Connect(WalletProviderType.kukai);
                 }
                 else
@@ -59,17 +63,19 @@ namespace TezosSDKExamples.Scenes
                     
                     // Tezos SDK For Unity
                     // Usage: Disconnect From Wallet Using The Tezos SDK For Unity
+                    View.AuthenticationQr.IsVisible = true;
                     _tezos.Wallet.Disconnect();
                 }
             });
         }
         
         
-        private async void Tezos_OnAccountConnected(string address)
+        private async void OnAccountConnected(string address)
         {
             // Required: Render UI
             await RefreshUIAsync();
-            
+            View.AuthenticationQr.IsVisible = false;
+                    
             // Tezos SDK For Unity
             // Usage: Get the active wallet address
             string activeWalletAddress = _tezos.Wallet.GetActiveAddress();
@@ -77,13 +83,19 @@ namespace TezosSDKExamples.Scenes
         }
         
         
-        private async void Tezos_AccountDisconnected(string address)
+        private async void AccountDisconnected(string address)
         {
             // Required: Render UI
             await RefreshUIAsync();
+            View.AuthenticationQr.IsVisible = false;
             
             // Optional: Add any custom code here
             Debug.Log($"You are not connected to a wallet.");
+        }
+        
+        private async void OnHandshakeReceived(string handshake)
+        {
+
         }
     }
 }
