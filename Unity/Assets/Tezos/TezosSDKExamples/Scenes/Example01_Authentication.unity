@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5551293943456911198, guid: 51af325471b63ee4485987010fb68823, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5915807012449117636, guid: 51af325471b63ee4485987010fb68823, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.9723697
@@ -249,11 +253,15 @@ PrefabInstance:
     - target: {fileID: 7397096904781658902, guid: 51af325471b63ee4485987010fb68823, type: 3}
       propertyPath: qrCodePanel
       value: 
-      objectReference: {fileID: 680921703}
+      objectReference: {fileID: 768923633}
     - target: {fileID: 7397096904781658902, guid: 51af325471b63ee4485987010fb68823, type: 3}
       propertyPath: deepLinkButton
       value: 
       objectReference: {fileID: 1818539363}
+    - target: {fileID: 7737246951144462554, guid: 51af325471b63ee4485987010fb68823, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8563298181646303683, guid: 51af325471b63ee4485987010fb68823, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -493,17 +501,12 @@ Transform:
   m_Father: {fileID: 981753199}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &680921703 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4282376748064869996, guid: 51af325471b63ee4485987010fb68823, type: 3}
-  m_PrefabInstance: {fileID: 97645372}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &680921704 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8037881236347277669, guid: 51af325471b63ee4485987010fb68823, type: 3}
   m_PrefabInstance: {fileID: 97645372}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680921703}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6b34a11c0bbb4c9e9c3c933d831d3e9, type: 3}
@@ -570,6 +573,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7570194977554188054, guid: 731a2c0a7dd9a224baacdc10d5d2bc85, type: 3}
   m_PrefabInstance: {fileID: 762224334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &768923633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7737246951144462554, guid: 51af325471b63ee4485987010fb68823, type: 3}
+  m_PrefabInstance: {fileID: 97645372}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &882989116
 PrefabInstance:
