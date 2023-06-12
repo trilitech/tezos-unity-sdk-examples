@@ -4,8 +4,8 @@ using RMC.Core.UI.DialogSystem;
 using TezosSDKExamples.View;
 using UnityEngine;
 using System;
-using TezosAPI;
 using TezosSDKExamples.Scenes;
+using Scripts.Tezos;
 using TezosSDKExamples.Shared.Tezos;
 
 #pragma warning disable CS4014, CS1998, CS0219
@@ -55,12 +55,12 @@ namespace TezosSDKExamples.Controllers
             
             // Tezos SDK For Unity
             // Usage: Determines if the user is authenticated
-            ITezosAPI tezos = TezosSingleton.Instance;
+            ITezos tezos = TezosSingleton.Instance;
             bool isAuthenticated = tezos.HasActiveWalletAddress();
             
             // Tezos SDK For Unity
             // Usage: Returns the address of the current active wallet
-            string address = tezos.GetActiveWalletAddress();
+            string address = tezos.Wallet.GetActiveAddress();
             
             
             // Header

@@ -1,5 +1,6 @@
-using TezosAPI;
 using UnityEngine;
+using Scripts.Tezos;
+using Scripts.Tezos.Wallet;
 
 namespace TezosSDKExamples.Shared.Tezos
 {
@@ -61,7 +62,7 @@ namespace TezosSDKExamples.Shared.Tezos
 
         
         private bool _isMobile;
-        private ITezosAPI _tezos;
+        private ITezos _tezos;
         private string _lastHandshake = "";
         private bool _isVisible = false;
    
@@ -80,9 +81,9 @@ namespace TezosSDKExamples.Shared.Tezos
             IsVisible = _isVisibleOnAwake;
             
             _tezos = TezosSingleton.Instance;
-            _tezos.MessageReceiver.HandshakeReceived += OnHandshakeReceived;
-            _tezos.MessageReceiver.AccountConnected += OnAccountConnected;
-            _tezos.MessageReceiver.AccountDisconnected += OnAccountDisconnected;
+            _tezos.Wallet.MessageReceiver.HandshakeReceived += OnHandshakeReceived;
+            _tezos.Wallet.MessageReceiver.AccountConnected += OnAccountConnected;
+            _tezos.Wallet.MessageReceiver.AccountDisconnected += OnAccountDisconnected;
     }
 
         //  Methods ---------------------------------------
@@ -97,12 +98,12 @@ namespace TezosSDKExamples.Shared.Tezos
         public void DisconnectWallet()
         {
             EnableUI(isAuthenticated: false);
-            _tezos.DisconnectWallet();
+            _tezos.Wallet.Disconnect();
         }
 
         public void ConnectByDeeplink()
         {
-            _tezos.ConnectWallet();
+            _tezos.Wallet.Connect(WalletProviderType.kukai);
         }
 
         void EnableUI(bool isAuthenticated)
